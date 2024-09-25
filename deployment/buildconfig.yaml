@@ -1,3 +1,9 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: bc-docker-fastapi
+spec:
+  tags: []
 ---
 apiVersion: build.openshift.io/v1
 kind: BuildConfig
@@ -27,6 +33,7 @@ spec:
       from:
         kind: ImageStreamTag
         name: python:3.9
+      dockerfilePath: "deployment/Dockerfile"
     type: Docker
   successfulBuildsHistoryLimit: 5
 
